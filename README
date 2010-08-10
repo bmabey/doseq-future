@@ -2,6 +2,8 @@
 
 Example of how lazy-seqs are not released when realized in a future (when they are created prior to the future).
 
+ML post: http://bit.ly/d0V8jV
+
 ## Usage
 
 $ lein repl
