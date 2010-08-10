@@ -1,0 +1,13 @@
+# doseq-future
+
+Example of how lazy-seqs are not released when realized in a future (when they are created prior to the future).
+
+## Usage
+
+$ lein repl
+user=> (use 'doseq-future.core) ; at this point you should open up visualVM so you can take heap dumps and look at object counts
+nil
+user=> (run good 30) ; durring this run the number of Foos in memory won't exceed one
+java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.Exception: quitting! (NO_SOURCE_FILE:1)
+user=> (run bad 30) ; durring this run the number of Foos just get bigger and bigger- the lazy-never releasing the lazy-seq ref 
+java.util.concurrent.ExecutionException: java.lang.RuntimeException: java.lang.Exception: quitting! (NO_SOURCE_FILE:1)
